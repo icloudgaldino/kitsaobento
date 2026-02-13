@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosteiro de São Bento - Aguardando</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 10px 0;
+        }
+        
+        .logo {
+            max-width: 120px;
+            height: auto;
+        }
+        
+        .logo-placeholder {
+            width: 120px;
+            height: 60px;
+            background-color: #e8e1d5;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B4513;
+            font-size: 0.8rem;
+            border: 1px solid #d4c9b8;
+        }
+        
+        .image-container {
+            width: 100%;
+            margin: 0 auto 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .image-wrapper {
+            max-width: 250px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 180px;
+            background-color: #e8e1d5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B4513;
+            flex-direction: column;
+            border: 1px solid #d4c9b8;
+        }
+        
+        .image-placeholder i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #D4AF37;
+        }
+        
+        .image-placeholder span {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .loaded-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .loading-section {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .loading-text {
+            font-size: 1rem;
+            color: #8B4513;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #e8e1d5;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #8B4513;
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        
+        .percentage {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #8B4513;
+            margin: 10px 0 25px 0;
+        }
+        
+        .main-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #8B4513;
+            margin: 25px 0 15px 0;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .description {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 20px 0;
+            line-height: 1.4;
+            text-align: center;
+        }
+        
+        .highlight-box {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e8e1d5;
+        }
+        
+        .highlight-text {
+            font-size: 0.9rem;
+            color: #333;
+            line-height: 1.5;
+            text-align: center;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo no topo -->
+        <div class="logo-container">
+            <div class="logo-placeholder">
+                <i class="fas fa-church"></i>
+                Logo
+            </div>
+        </div>
+        
+        <!-- Container da imagem -->
+        <div class="image-container">
+            <div class="image-wrapper" id="imageWrapper">
+                <div class="image-placeholder">
+                    <i class="fas fa-image"></i>
+                    <span>images/img3.png</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="loading-section">
+            <div class="loading-text">Aguarde... estamos separando seu Kit Sagrado.</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="percentage" id="percentage">0%</div>
+        </div>
+        
+        <div class="main-title">AGUARDE ENQUANTO SEPARAMOS SEU KIT</div>
+        <div class="highlight-box">
+            <div class="highlight-text">
+                Estamos verificando sua devoção e preparando seu kit conforme a disponibilidade de hoje.<br>
+                Restam poucos kits — continue para garantir o seu.
+            </div>
+        </div>
+        
+        <div class="footer">
+            © 2025 Mosteiro de São Bento. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script>
+        // Carregar logo quando disponível
+        window.addEventListener('load', function() {
+            const logoContainer = document.querySelector('.logo-container');
+            const logoImg = new Image();
+            logoImg.src = 'images/logo.webp';
+            logoImg.className = 'logo';
+            logoImg.onload = function() {
+                logoContainer.innerHTML = '';
+                logoContainer.appendChild(logoImg);
+            };
+            logoImg.onerror = function() {
+                console.log('Logo não encontrada em: images/logo.webp');
+            };
+            
+            // Carregar imagem principal
+            const imageWrapper = document.getElementById('imageWrapper');
+            const mainImg = new Image();
+            mainImg.src = 'images/img3.png';
+            mainImg.className = 'loaded-image';
+            
+            mainImg.onload = function() {
+                // Substitui o placeholder pela imagem carregada
+                imageWrapper.innerHTML = '';
+                imageWrapper.appendChild(mainImg);
+                console.log('Imagem carregada com sucesso!');
+            };
+            
+            mainImg.onerror = function() {
+                console.log('Erro ao carregar imagem: images/img3.png');
+                // Mantém o placeholder se a imagem não carregar
+            };
+            
+            // Animação da barra de progresso
+            const progressBar = document.getElementById('progressBar');
+            const percentage = document.getElementById('percentage');
+            
+            let progress = 0;
+            const totalTime = 8000; // 8 segundos
+            const intervalTime = 50; // atualiza a cada 50ms
+            const increments = 100 / (totalTime / intervalTime);
+            
+            const interval = setInterval(() => {
+                progress += increments;
+                if (progress > 100) progress = 100;
+                
+                progressBar.style.width = progress + '%';
+                percentage.textContent = Math.round(progress) + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    // Redireciona automaticamente após completar
+                    setTimeout(() => {
+                        // COLOCAR O LINK DA PRÓXIMA PÁGINA AQUI
+                        window.location.href = 'proxima-pagina.html';
+                    }, 500);
+                }
+            }, intervalTime);
+        });
+    </script>
+</body>
+</html>

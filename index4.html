@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosteiro de São Bento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+        }
+        
+        .logo {
+            max-width: 120px;
+            height: auto;
+        }
+        
+        .logo-placeholder {
+            width: 120px;
+            height: 60px;
+            background-color: #e8e1d5;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B4513;
+            font-size: 0.8rem;
+            border: 1px solid #d4c9b8;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .header h1 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #8B4513;
+            line-height: 1.4;
+        }
+        
+        .image-container {
+            width: 100%;
+            margin: 0 auto 30px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .image-wrapper {
+            max-width: 280px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #e8e1d5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B4513;
+            flex-direction: column;
+            border: 1px solid #d4c9b8;
+        }
+        
+        .image-placeholder i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #D4AF37;
+        }
+        
+        .image-placeholder span {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .loaded-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .content {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .content p {
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .button {
+            display: block;
+            width: 100%;
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 25px 0;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .button:hover {
+            background-color: #A0522D;
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo no topo -->
+        <div class="logo-container">
+            <div class="logo-placeholder">
+                <i class="fas fa-church"></i>
+                Logo
+            </div>
+        </div>
+        
+        <!-- Título acima da imagem -->
+        <div class="header">
+            <h1>Se você ainda não reza o Terço de São Bento, saiba:</h1>
+        </div>
+        
+        <!-- Container da imagem -->
+        <div class="image-container">
+            <div class="image-wrapper" id="imageWrapper">
+                <div class="image-placeholder">
+                    <i class="fas fa-image"></i>
+                    <span>images/img2.png</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- Texto em negrito -->
+            <p><strong>Não é por acaso que você está aqui agora. Talvez esta seja a oportunidade que São Bento está oferecendo para você fortalecer sua fé e sua proteção espiritual.</strong></p>
+            
+            <!-- BOTÃO COM LINK DE REDIRECIONAMENTO -->
+            <a href="proxima-pagina.html" class="button">CONTINUAR</a>
+        </div>
+        
+        <div class="footer">
+            © 2025 Mosteiro de São Bento. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script>
+        // Carregar logo quando disponível
+        window.addEventListener('load', function() {
+            const logoContainer = document.querySelector('.logo-container');
+            const logoImg = new Image();
+            logoImg.src = 'images/logo.webp';
+            logoImg.className = 'logo';
+            logoImg.onload = function() {
+                logoContainer.innerHTML = '';
+                logoContainer.appendChild(logoImg);
+            };
+            logoImg.onerror = function() {
+                console.log('Logo não encontrada em: images/logo.webp');
+            };
+            
+            // Carregar imagem principal
+            const imageWrapper = document.getElementById('imageWrapper');
+            const mainImg = new Image();
+            mainImg.src = 'images/img2.png';
+            mainImg.className = 'loaded-image';
+            
+            mainImg.onload = function() {
+                // Substitui o placeholder pela imagem carregada
+                imageWrapper.innerHTML = '';
+                imageWrapper.appendChild(mainImg);
+                console.log('Imagem carregada com sucesso!');
+            };
+            
+            mainImg.onerror = function() {
+                console.log('Erro ao carregar imagem: images/img2.png');
+                // Mantém o placeholder se a imagem não carregar
+            };
+        });
+    </script>
+</body>
+</html>

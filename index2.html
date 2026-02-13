@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosteiro de São Bento - Vídeo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 10px 0;
+        }
+        
+        .logo {
+            max-width: 120px;
+            height: auto;
+        }
+        
+        .logo-placeholder {
+            width: 120px;
+            height: 60px;
+            background-color: #e8e1d5;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B4513;
+            font-size: 0.8rem;
+            border: 1px solid #d4c9b8;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #8B4513;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .video-container {
+            width: 100%;
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #000;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 220px;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-direction: column;
+        }
+        
+        .video-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #D4AF37;
+        }
+        
+        .video-info {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .checkbox-section {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e8e1d5;
+        }
+        
+        .checkbox-text {
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .button {
+            display: block;
+            width: 100%;
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 25px 0;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo no topo -->
+        <div class="logo-container">
+            <div class="logo-placeholder">
+                <i class="fas fa-church"></i>
+                Logo
+            </div>
+        </div>
+        
+        <div class="header">
+            <h1>Assista ao vídeo para entender como funciona o Kit Bencão de São Bento.</h1>
+        </div>
+        
+        <!-- Container do vídeo -->
+        <div class="video-container">
+            <div class="video-placeholder">
+                <i class="fas fa-play-circle"></i>
+                Vídeo: video/video1.mp4
+            </div>
+        </div>
+        
+        <div class="video-info">
+            Escute a mensagem do nosso querido Padre. Ele explicará por que este kit é tão importante para sua proteção espiritual.
+        </div>
+        
+        <div class="checkbox-section">
+            <div class="checkbox-text">
+                - [ ] Ao finalizar o questionário, você poderá receber gratuitamente um Kit de São Bento especial do Mosteiro.
+            </div>
+        </div>
+        
+        <a href="questionario.html" class="button">CONTINUAR QUESTIONÁRIO</a>
+        
+        <div class="footer">
+            © 2025 Mosteiro de São Bento. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script>
+        // Carregar logo quando disponível
+        window.addEventListener('load', function() {
+            const logoContainer = document.querySelector('.logo-container');
+            const logoImg = new Image();
+            logoImg.src = 'images/logo.webp';
+            logoImg.className = 'logo';
+            logoImg.onload = function() {
+                logoContainer.innerHTML = '';
+                logoContainer.appendChild(logoImg);
+            };
+            logoImg.onerror = function() {
+                console.log('Logo não encontrada em: images/logo.webp');
+            };
+            
+            // Carregar vídeo quando disponível
+            const videoContainer = document.querySelector('.video-container');
+            const video = document.createElement('video');
+            video.src = 'video/video1.mp4';
+            video.controls = true;
+            video.style.width = '100%';
+            video.style.height = 'auto';
+            video.oncanplay = function() {
+                videoContainer.innerHTML = '';
+                videoContainer.appendChild(video);
+            };
+            video.onerror = function() {
+                console.log('Vídeo não encontrado em: video/video1.mp4');
+            };
+        });
+    </script>
+</body>
+</html>

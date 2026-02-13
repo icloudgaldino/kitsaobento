@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mosteiro de São Bento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #e8e1d5;
+            border-radius: 3px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            width: 80%; /* Progresso maior que as páginas anteriores */
+            height: 100%;
+            background-color: #8B4513;
+            border-radius: 3px;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+        }
+        
+        .logo {
+            max-width: 120px;
+            height: auto;
+        }
+        
+        .logo-placeholder {
+            width: 120px;
+            height: 60px;
+            background-color: #e8e1d5;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B4513;
+            font-size: 0.8rem;
+            border: 1px solid #d4c9b8;
+        }
+        
+        .image-container {
+            width: 100%;
+            margin: 0 auto 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .image-wrapper {
+            max-width: 280px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background-color: #e8e1d5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8B4513;
+            flex-direction: column;
+            border: 1px solid #d4c9b8;
+        }
+        
+        .image-placeholder i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #D4AF37;
+        }
+        
+        .image-placeholder span {
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .loaded-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .content {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .content h1 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #8B4513;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .content p {
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .button {
+            display: block;
+            width: 100%;
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 25px 0;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(139, 69, 19, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .button:hover {
+            background-color: #A0522D;
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Barra de progresso -->
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        
+        <!-- Logo no topo -->
+        <div class="logo-container">
+            <div class="logo-placeholder">
+                <i class="fas fa-church"></i>
+                Logo
+            </div>
+        </div>
+        
+        <!-- Container da imagem -->
+        <div class="image-container">
+            <div class="image-wrapper" id="imageWrapper">
+                <div class="image-placeholder">
+                    <i class="fas fa-image"></i>
+                    <span>images/img2.png</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1>A oração de São Bento protege sua alma.</h1>
+            
+            <p>Quem a recita diariamente fortalece o coração contra tentações,<br>
+            inveja e ataques espirituais.</p>
+            
+            <p>Se você ainda não a utiliza, não se preocupe — vamos te ajudar a<br>
+            começar hoje.</p>
+            
+            <!-- BOTÃO COM LINK DE REDIRECIONAMENTO -->
+            <a href="proxima-pagina.html" class="button">CONTINUAR</a>
+        </div>
+        
+        <div class="footer">
+            © 2025 Mosteiro de São Bento. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <script>
+        // Carregar logo quando disponível
+        window.addEventListener('load', function() {
+            const logoContainer = document.querySelector('.logo-container');
+            const logoImg = new Image();
+            logoImg.src = 'images/logo.webp';
+            logoImg.className = 'logo';
+            logoImg.onload = function() {
+                logoContainer.innerHTML = '';
+                logoContainer.appendChild(logoImg);
+            };
+            logoImg.onerror = function() {
+                console.log('Logo não encontrada em: images/logo.webp');
+            };
+            
+            // Carregar imagem principal
+            const imageWrapper = document.getElementById('imageWrapper');
+            const mainImg = new Image();
+            mainImg.src = 'images/img2.png';
+            mainImg.className = 'loaded-image';
+            
+            mainImg.onload = function() {
+                // Substitui o placeholder pela imagem carregada
+                imageWrapper.innerHTML = '';
+                imageWrapper.appendChild(mainImg);
+                console.log('Imagem carregada com sucesso!');
+            };
+            
+            mainImg.onerror = function() {
+                console.log('Erro ao carregar imagem: images/img2.png');
+                // Mantém o placeholder se a imagem não carregar
+            };
+        });
+    </script>
+</body>
+</html>
